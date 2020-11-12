@@ -13,8 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AllServices {
+	public AllServices() {
+		loadData();
+	}
 	
-	private List<Businesscard> businesscards = new ArrayList<>();
+	private  List<Businesscard> businesscards = new ArrayList<>();
 
 
 	/**
@@ -33,7 +36,7 @@ public class AllServices {
 	public Businesscard getById(String icd,String enterpriseNumber) {
 		String input=icd+":"+enterpriseNumber;
 		Businesscard businesscard =new Businesscard();
-		loadData();
+		//loadData();
 		for (Businesscard businesscardObject : businesscards) {
 			if(businesscardObject.getParticipant().getValue().
 					equalsIgnoreCase(input)){
@@ -56,11 +59,12 @@ public class AllServices {
 	 * Output: JSON containing Name, Enterprise number and country code.
 	 * @param name
 	 * @return
+	 * @throws IOException 
+	 * @throws JAXBException 
 	 */
-	public List<Businesscard> searchByName(String name) {
-		// TODO Auto-generated method stub
-		List <Businesscard> businesscardList =new ArrayList<>();
-		loadData();
+	public List<Businesscard> searchByName(String name) throws JAXBException, IOException {
+			List <Businesscard> businesscardList =new ArrayList<>();
+		//loadData();
 		for (Businesscard businesscardObject : businesscards) {
 			if(businesscardObject.getEntity().getChildItem().getName().
 					contains(name)){
@@ -86,7 +90,7 @@ public class AllServices {
 	 */
 	public Businesscard getByName(String name) {
 		Businesscard businesscard =new Businesscard();
-		loadData();
+	//	loadData();
 		for (Businesscard businesscardObject : businesscards) {
 			if(businesscardObject.getEntity().getChildItem().getName().
 					equalsIgnoreCase(name)){
@@ -95,22 +99,8 @@ public class AllServices {
 		}
 		return businesscard;
 	}
-
 	
-	
-	public Businesscard unmarshall() throws JAXBException, IOException {
-		if(businesscards.isEmpty()) {
-	    JAXBContext context = JAXBContext.newInstance(Root.class);
-	    Root rootObject=(Root) context.createUnmarshaller()
-	      .unmarshal(new File("directory-export-business-cards.xml"));
-	    businesscards=rootObject.getBusinesscards();
-		}
-	    return (Businesscard) businesscards;
-		
-	}
-	
-	
-	public void  loadData (){
+	 public void  loadData (){
 		try {
 			if(businesscards.isEmpty()){
 				//File file = new File("peppol123.xml");
@@ -125,7 +115,7 @@ public class AllServices {
 			e.printStackTrace();
 		}
 
-	}
+	} 
 
 
 

@@ -1,6 +1,7 @@
 package com.example.restservice.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAttribute;
@@ -47,10 +48,12 @@ public class Root implements Serializable {
 	}
 
 	@XmlElement(name = "businesscard")
-	public List<Businesscard> businesscards = null;
+	public List<Businesscard> businesscards =null;
 
 	public List<Businesscard> getBusinesscards() {
 		return businesscards;
 	}
+
+	
 
 }

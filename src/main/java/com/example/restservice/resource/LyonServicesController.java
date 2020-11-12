@@ -7,8 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.restservice.model.Businesscard;
 import com.example.restservice.service.AllServices;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
+
+import javax.xml.bind.JAXBException;
 
 /**
  * Controller for Lyon service
@@ -34,7 +37,7 @@ public class LyonServicesController {
 
 	//service two
 	@GetMapping("/lyon/searchByName")
-	public List<Businesscard> searchByName(@RequestParam(name = "name") String name) {
+	public List<Businesscard> searchByName(@RequestParam(name = "name") String name) throws JAXBException, IOException {
 		return allServices.searchByName(name);
 	}
 
