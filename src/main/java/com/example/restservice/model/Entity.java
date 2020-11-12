@@ -1,7 +1,6 @@
 package com.example.restservice.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
@@ -17,7 +16,7 @@ public class Entity implements Serializable{
 	String regdate;
 
 	@XmlElement(name = "id")
-	private List<Participant> participant=new ArrayList<>();
+	private List<Participant> participant;
 
 	@XmlElement(name = "name")
 	private ChildItem childItem;
