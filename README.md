@@ -4,13 +4,11 @@ Documentation:
 
 Step 1 : download project or clone 
 
-Step 2 : unzip file 
+Step 2 : run mvn install command in project directory  
 
-Step 3 : run mvn install command in project directory  
+step 3 : download and import large xml file(https://directory.peppol.eu/public) in project directory 
 
-step 4 : download and import large xml file(https://directory.peppol.eu/public) in project directory 
-
-step 5 : run the application 
+step 4 : run the application 
 
 -------------
 # Api service 1 : getById
